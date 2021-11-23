@@ -31,7 +31,7 @@ function App() {
   }, [contacts]);
 
   return (
-    <div className="ui container">
+    <div className="container mx-auto">
       <Header />
       <AddContact addContactHandler={addContactHandler} />
       <ContactList contacts={contacts} getContactId={removeContactHandler} />

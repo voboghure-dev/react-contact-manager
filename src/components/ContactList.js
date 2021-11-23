@@ -16,7 +16,7 @@ const ContactList = (props) => {
     );
   });
 
-  return <div className="ui celled list">{renderContactList}</div>;
+  return <div className="grid grid-cols-1 gap-x-14 justify-center py-6">{renderContactList}</div>;
 };
 
 export default ContactList;
