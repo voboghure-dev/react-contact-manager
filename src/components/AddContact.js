@@ -4,20 +4,21 @@ import { useNavigate } from "react-router-dom";
 // class AddContact extends React.Component {
 const AddContact = (props) => {
   let navigates = useNavigate();
-  const [contact, setContact] = useState([]);
-  const { id, name, email } = props;
-  console.log(props);
+  const [contact, setContact] = useState({
+    name: "",
+    email: ""
+  });
 
   const add = (e) => {
     e.preventDefault();
-    if (name === "" || email === "") {
+    if (contact.name === "" || contact.email === "") {
       alert("All the fields are mandatory!");
       return;
     }
     props.addContactHandler(contact);
     setContact({ name: "", email: "" });
 
-    // navigates("/");
+    navigates("/");
   };
 
   return (
@@ -27,7 +28,7 @@ const AddContact = (props) => {
           <div className="md:w-1/3">
             <label
               className="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4"
-              htmlFor="inline-full-name"
+              htmlFor="inline-name"
             >
               Name
             </label>
@@ -35,12 +36,12 @@ const AddContact = (props) => {
           <div className="md:w-2/3">
             <input
               className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
-              id="inline-full-name"
+              id="inline-name"
               name="name"
               type="text"
               placeholder="Full name"
-              value={name}
-              onChange={(e) => setContact({ name: e.target.value })}
+              value={contact.name}
+              onChange={(e) => setContact({ ...contact, name: e.target.value })}
             />
           </div>
         </div>
@@ -48,7 +49,7 @@ const AddContact = (props) => {
           <div className="md:w-1/3">
             <label
               className="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4"
-              htmlFor="inline-password"
+              htmlFor="inline-email"
             >
               Email
             </label>
@@ -56,12 +57,12 @@ const AddContact = (props) => {
           <div className="md:w-2/3">
             <input
               className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
-              id="inline-password"
+              id="inline-email"
               name="email"
               type="text"
               placeholder="Email"
-              value={email}
-              onChange={(e) => setContact({ email: e.target.value })}
+              value={contact.email}
+              onChange={(e) => setContact({ ...contact, email: e.target.value })}
             />
           </div>
         </div>
