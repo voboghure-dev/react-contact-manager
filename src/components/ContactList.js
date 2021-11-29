@@ -28,7 +28,7 @@ const ContactList = (props) => {
         </Link>
       </h2>
 
-      <div className="grid grid-cols-1 gap-x-14 justify-center py-6">
+      <div className="py-6 flex justify-around">
         {renderContactList}
       </div>
     </div>

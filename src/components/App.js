@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { v4 as uuidv4 } from "uuid";
 import "./App.css";
 import Header from "./Header";
 import AddContact from "./AddContact";
 import ContactList from "./ContactList";
+import ContactDetails from "./ContactDetails";
 
 function App() {
   const LOCAL_STORAGE_KEY = "contacts";
@@ -34,12 +35,8 @@ function App() {
   return (
     <div className="container mx-auto">
       <Header />
-      <BrowserRouter>
+      <Router>
         <Routes>
-          <Route
-            path="/add"
-            element={<AddContact addContactHandler={addContactHandler} />}
-          />
           <Route
             path="/"
             element={
@@ -49,8 +46,13 @@ function App() {
               />
             }
           />
+          <Route
+            path="/add"
+            element={<AddContact addContactHandler={addContactHandler} />}
+          />
+          <Route path="/contact/:id" element={<ContactDetails />} />
         </Routes>
-      </BrowserRouter>
+      </Router>
     </div>
   );
 }

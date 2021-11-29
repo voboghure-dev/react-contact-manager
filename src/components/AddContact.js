@@ -1,12 +1,12 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 // class AddContact extends React.Component {
 const AddContact = (props) => {
   let navigates = useNavigate();
   const [contact, setContact] = useState({
     name: "",
-    email: ""
+    email: "",
   });
 
   const add = (e) => {
@@ -62,16 +62,25 @@ const AddContact = (props) => {
               type="text"
               placeholder="Email"
               value={contact.email}
-              onChange={(e) => setContact({ ...contact, email: e.target.value })}
+              onChange={(e) =>
+                setContact({ ...contact, email: e.target.value })
+              }
             />
           </div>
         </div>
         <div className="md:flex md:items-center">
           <div className="md:w-1/3"></div>
-          <div className="md:w-2/3">
+          <div className="md:w-1/3">
             <button className="shadow bg-purple-500 hover:bg-purple-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded">
               Add Entry
             </button>
+          </div>
+          <div className="md:w-1/3 text-right">
+            <Link to="/">
+              <button className="shadow bg-purple-500 hover:bg-purple-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded">
+                Home
+              </button>
+            </Link>
           </div>
         </div>
       </form>
