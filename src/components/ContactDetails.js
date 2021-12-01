@@ -13,7 +13,6 @@ const ContactDetails = (props) => {
       (today.getMonth() + 1) +
       "-" +
       today.getFullYear();
-  //   console.log(curDate);
 
   return (
     <div className="max-w-2xl px-8 py-4 mt-6 mx-auto bg-white rounded-lg shadow-md dark:bg-gray-800">

@@ -5,7 +5,6 @@ import { FaTrashAlt } from "react-icons/fa";
 
 const ContactCard = (props) => {
   const { id, firstName, lastName, email, phoneNumber } = props.contact;
-  // console.log(props.contact);
 
   return (
     <div className="flex justify-center items-center py-2">

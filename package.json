@@ -1,6 +1,6 @@
 {
   "name": "react-contact-manager",
-  "homepage": "https://voboghure-dev.github.io/react-contact-manager/",
+  "homepage": "https://voboghure-dev.github.io/react-contact-manager",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -21,6 +21,7 @@
     "start": "craco start",
     "build": "craco build",
     "test": "craco test",
+    "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
     "eject": "react-scripts eject"
   },

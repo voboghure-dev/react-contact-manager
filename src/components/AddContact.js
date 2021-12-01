@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 
-// class AddContact extends React.Component {
 const AddContact = (props) => {
   let navigates = useNavigate();
   const [contact, setContact] = useState({
