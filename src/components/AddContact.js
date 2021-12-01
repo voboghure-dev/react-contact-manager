@@ -5,86 +5,111 @@ import { useNavigate, Link } from "react-router-dom";
 const AddContact = (props) => {
   let navigates = useNavigate();
   const [contact, setContact] = useState({
-    name: "",
+    firstName: "",
+    lastName: "",
     email: "",
+    phoneNumber: "",
   });
 
   const add = (e) => {
     e.preventDefault();
-    if (contact.name === "" || contact.email === "") {
-      alert("All the fields are mandatory!");
+    if (contact.firstName === "" || contact.email === "") {
+      alert("First Name and Email is required!");
       return;
     }
     props.addContactHandler(contact);
-    setContact({ name: "", email: "" });
+    setContact({ firstName: "", lastName: "", email: "", phoneNumber: "" });
 
     navigates("/");
   };
 
   return (
-    <div className="flex justify-center py-6">
-      <form className="w-full max-w-sm" onSubmit={add}>
-        <div className="md:flex md:items-center mb-6">
-          <div className="md:w-1/3">
+    <section className="max-w-4xl mt-6 p-6 mx-auto bg-white rounded-md shadow-md dark:bg-gray-800">
+      <h2 className="text-lg font-semibold text-gray-700 capitalize dark:text-white">
+        Account settings
+      </h2>
+
+      <form onSubmit={add}>
+        <div className="grid grid-cols-1 gap-6 mt-4 sm:grid-cols-2">
+          <div>
             <label
-              className="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4"
-              htmlFor="inline-name"
+              className="text-gray-700 dark:text-gray-200"
+              htmlFor="firstName"
             >
-              Name
+              First Name
             </label>
-          </div>
-          <div className="md:w-2/3">
             <input
-              className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
-              id="inline-name"
-              name="name"
+              id="firstName"
               type="text"
-              placeholder="Full name"
-              value={contact.name}
-              onChange={(e) => setContact({ ...contact, name: e.target.value })}
+              value={contact.firstName}
+              onChange={(e) =>
+                setContact({ ...contact, firstName: e.target.value })
+              }
+              className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring"
             />
           </div>
-        </div>
-        <div className="md:flex md:items-center mb-6">
-          <div className="md:w-1/3">
+
+          <div>
             <label
-              className="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4"
-              htmlFor="inline-email"
+              className="text-gray-700 dark:text-gray-200"
+              htmlFor="lastName"
             >
+              Last Name
+            </label>
+            <input
+              id="lastName"
+              type="text"
+              value={contact.lastName}
+              onChange={(e) =>
+                setContact({ ...contact, lastName: e.target.value })
+              }
+              className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring"
+            />
+          </div>
+
+          <div>
+            <label className="text-gray-700 dark:text-gray-200" htmlFor="email">
               Email
             </label>
-          </div>
-          <div className="md:w-2/3">
             <input
-              className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
-              id="inline-email"
-              name="email"
-              type="text"
-              placeholder="Email"
+              id="email"
+              type="email"
               value={contact.email}
               onChange={(e) =>
                 setContact({ ...contact, email: e.target.value })
               }
+              className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring"
+            />
+          </div>
+
+          <div>
+            <label className="text-gray-700 dark:text-gray-200" htmlFor="phone">
+              Phone Number
+            </label>
+            <input
+              id="phoneNumber"
+              type="text"
+              value={contact.phoneNumber}
+              onChange={(e) =>
+                setContact({ ...contact, phoneNumber: e.target.value })
+              }
+              className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring"
             />
           </div>
         </div>
-        <div className="md:flex md:items-center">
-          <div className="md:w-1/3"></div>
-          <div className="md:w-1/3">
-            <button className="shadow bg-purple-500 hover:bg-purple-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded">
-              Add Entry
+
+        <div className="flex justify-end mt-6">
+          <Link to="/">
+            <button className="px-6 py-2 leading-5 text-white transition-colors duration-200 transform bg-gray-700 rounded-md hover:bg-gray-600 focus:outline-none focus:bg-gray-600">
+              Back to Home
             </button>
-          </div>
-          <div className="md:w-1/3 text-right">
-            <Link to="/">
-              <button className="shadow bg-purple-500 hover:bg-purple-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded">
-                Home
-              </button>
-            </Link>
-          </div>
+          </Link>
+          <button className="px-6 py-2 ml-6 leading-5 text-white transition-colors duration-200 transform bg-gray-700 rounded-md hover:bg-gray-600 focus:outline-none focus:bg-gray-600">
+            Save
+          </button>
         </div>
       </form>
-    </div>
+    </section>
   );
 };
 

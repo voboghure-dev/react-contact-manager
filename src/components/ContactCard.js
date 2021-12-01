@@ -1,14 +1,14 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import user from "../images/user.png";
-import { TrashIcon } from "@heroicons/react/outline";
+import { FaTrashAlt } from "react-icons/fa";
 
 const ContactCard = (props) => {
-  const { id, name, email } = props.contact;
+  const { id, firstName, lastName, email, phoneNumber } = props.contact;
   // console.log(props.contact);
 
   return (
-    <div className="w-full max-w-sm">
+    <div className="flex justify-center items-center py-2">
       <div className="border border-gray-400 bg-white rounded p-4 flex flex-col leading-normal">
         <div className="flex items-center justify-between">
           <img
@@ -17,18 +17,14 @@ const ContactCard = (props) => {
             alt="Avatar"
           />
           <div className="text-sm w-60">
-            <Link
-              to={{
-                pathname: `/contact/${id}`,
-                state: { contact: props.contact },
-              }}
-            >
-              <p className="text-gray-900 leading-none">{name}</p>
+            <Link to={`/contact/${id}`} state={props.contact}>
+              <p className="text-gray-900 leading-none">{firstName} {lastName}</p>
               <p className="text-gray-600">{email}</p>
+              <p className="text-gray-600">{phoneNumber}</p>
             </Link>
           </div>
           <div className="text-sm">
-            <TrashIcon
+            <FaTrashAlt
               className="w-8 h-8 text-red-500"
               onClick={() => props.clickHandler(id)}
             />

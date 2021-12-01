@@ -12,6 +12,7 @@ function App() {
   const [contacts, setContacts] = useState([]);
 
   const addContactHandler = (contact) => {
+    console.log(contact);
     setContacts([...contacts, { id: uuidv4(), ...contact }]);
   };
 
@@ -34,8 +35,9 @@ function App() {
 
   return (
     <div className="container mx-auto">
-      <Header />
       <Router>
+        <Header />
+
         <Routes>
           <Route
             path="/"

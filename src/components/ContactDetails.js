@@ -2,43 +2,41 @@ import React from "react";
 import { Link, useLocation } from "react-router-dom";
 
 const ContactDetails = (props) => {
-    const location = useLocation();
-    console.log(location);
-  //   const { id, name, email } = props.contact;
+  const location = useLocation();
+
+  const { firstName, lastName, email, phoneNumber } = location.state;
+
+  var today = new Date(),
+    date =
+      today.getDate() +
+      "-" +
+      (today.getMonth() + 1) +
+      "-" +
+      today.getFullYear();
+  //   console.log(curDate);
 
   return (
-    <div className="flex justify-around py-6">
-      <div className="max-w-lg p-4 shadow-md dark:bg-coolGray-900 dark:text-coolGray-100">
-        <div className="flex justify-between pb-4 border-bottom">
-          <div className="flex items-center">
-            <a href="#" className="mb-0 capitalize dark:text-coolGray-100">
-              Contact Details
-            </a>
-          </div>
-        </div>
-        <div className="space-y-4">
-          <div className="space-y-2">
-            <a href="#" className="block">
-              <h3 className="text-xl font-semibold dark:text-violet-400">
-                Facere ipsa nulla corrupti praesentium pariatur architecto
-              </h3>
-            </a>
-            <p className="leading-snug dark:text-coolGray-400">
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-              Repellat, excepturi. Lorem ipsum dolor sit amet consectetur,
-              adipisicing elit. Repellat, excepturi.
-            </p>
-          </div>
-        </div>
-        <Link to="/">
-          <button
-            type="button"
-            className="px-8 py-3 mt-6 font-semibold border rounded bg-green-300 dark:border-coolGray-100 dark:text-coolGray-100"
-          >
-            Back to Home
-          </button>
+    <div className="max-w-2xl px-8 py-4 mt-6 mx-auto bg-white rounded-lg shadow-md dark:bg-gray-800">
+      <div className="flex items-center justify-between">
+        <span className="text-sm font-light text-gray-600 dark:text-gray-400">
+          {date}
+        </span>
+        <Link
+          to="/"
+          className="px-3 py-1 text-sm font-bold text-gray-100 transition-colors duration-200 transform bg-gray-600 rounded cursor-pointer hover:bg-gray-500"
+        >
+          Back to Home
         </Link>
       </div>
+
+      <div className="mt-2">
+        <div className="text-2xl font-bold text-gray-700 dark:text-white hover:text-gray-600 dark:hover:text-gray-200 hover:underline">
+          {firstName} {lastName}
+        </div>
+        <p className="mt-2 text-gray-600 dark:text-gray-300">Email: {email}</p>
+        <p className="mt-2 text-gray-600 dark:text-gray-300">Phone: {phoneNumber}</p>
+      </div>
+
     </div>
   );
 };
